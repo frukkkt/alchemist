@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Inventory" load_steps=10 format=3 uid="uid://c6v8xgkh1lrdg"]
+
+[ext_resource type="Script" uid="uid://cc58ijkrt0f" path="res://scripts/inventory/inventory.gd" id="1_058eb"]
+[ext_resource type="Resource" uid="uid://bhqpj8aid58rd" path="res://scripts/inventory/all_inventory_items.tres" id="1_51262"]
+[ext_resource type="Script" uid="uid://cufg8gisxtdeb" path="res://scripts/inventory/inventory_item.gd" id="2_gm6wr"]
+[ext_resource type="Texture2D" uid="uid://lak6spi51y81" path="res://sprites/Herbs Pack 32x32 free/Whole things/red_peppers 32.png" id="4_87el7"]
+[ext_resource type="Texture2D" uid="uid://cboyy3imi5t2l" path="res://sprites/Herbs Pack 32x32 free/Whole things/turmeric 32.png" id="5_317li"]
+[ext_resource type="Texture2D" uid="uid://b5yxgwwwcev0u" path="res://sprites/Herbs Pack 32x32 free/ChatGPT Image 28 июн. 2025 г., 20_04_14.png" id="6_75tyk"]
+
+[sub_resource type="Resource" id="Resource_o7qb3"]
+script = ExtResource("2_gm6wr")
+texture = ExtResource("4_87el7")
+item_name = "Crimson Capsicum"
+count = 2
+metadata/_custom_type_script = "uid://cufg8gisxtdeb"
+
+[sub_resource type="Resource" id="Resource_1s7fy"]
+script = ExtResource("2_gm6wr")
+texture = ExtResource("5_317li")
+item_name = "Sunroot Dust"
+count = 1
+metadata/_custom_type_script = "uid://cufg8gisxtdeb"
+
+[sub_resource type="Resource" id="Resource_813vq"]
+script = ExtResource("2_gm6wr")
+texture = ExtResource("6_75tyk")
+item_name = "Mindbloom"
+count = 3
+metadata/_custom_type_script = "uid://cufg8gisxtdeb"
+
+[resource]
+script = ExtResource("1_058eb")
+storage = Array[ExtResource("2_gm6wr")]([SubResource("Resource_o7qb3"), SubResource("Resource_1s7fy"), SubResource("Resource_813vq")])
+metadata/_custom_type_script = "uid://cc58ijkrt0f"
+metadata/all_items = ExtResource("1_51262")

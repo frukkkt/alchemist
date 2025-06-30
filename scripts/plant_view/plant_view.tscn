@@ -1,0 +1,110 @@
+[gd_scene load_steps=15 format=3 uid="uid://kerm6tp1wun7"]
+
+[ext_resource type="Texture2D" uid="uid://b5yxgwwwcev0u" path="res://sprites/Herbs Pack 32x32 free/ChatGPT Image 28 июн. 2025 г., 20_04_14.png" id="1_0eu14"]
+[ext_resource type="Script" uid="uid://sjxlvgkpuhyc" path="res://scripts/plant_view/plant_view.gd" id="1_qyp2r"]
+[ext_resource type="Script" uid="uid://couw105c3bde4" path="res://addons/godot_state_charts/state_chart.gd" id="2_o4qva"]
+[ext_resource type="Script" uid="uid://jk2jm1g6q853" path="res://addons/godot_state_charts/compound_state.gd" id="3_8d46b"]
+[ext_resource type="Script" uid="uid://cytafq8i1y8qm" path="res://addons/godot_state_charts/atomic_state.gd" id="4_r6m5m"]
+[ext_resource type="Script" uid="uid://cqgna2mn723f2" path="res://scripts/plant_view/sprite_2d.gd" id="5_3jg25"]
+[ext_resource type="Script" uid="uid://cf1nsco3w0mf6" path="res://addons/godot_state_charts/transition.gd" id="5_8d46b"]
+[ext_resource type="Script" uid="uid://dsjaj6stj5f72" path="res://scripts/plant_view/state_chart_manager.gd" id="6_r6m5m"]
+[ext_resource type="Script" uid="uid://1xllv3j1tjq2" path="res://scripts/plant_view/states_logic.gd" id="7_1te3c"]
+[ext_resource type="Script" uid="uid://cufg8gisxtdeb" path="res://scripts/inventory/inventory_item.gd" id="8_pcue3"]
+[ext_resource type="Resource" uid="uid://bhqpj8aid58rd" path="res://scripts/inventory/all_inventory_items.tres" id="9_jmsrf"]
+
+[sub_resource type="Resource" id="Resource_qyp2r"]
+script = ExtResource("8_pcue3")
+texture = ExtResource("1_0eu14")
+item_name = "Mindbloom"
+count = 1
+metadata/_custom_type_script = "uid://cufg8gisxtdeb"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8d46b"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_tj0yi"]
+font_size = 7
+
+[node name="PlantView" type="Node2D"]
+script = ExtResource("1_qyp2r")
+plant = SubResource("Resource_qyp2r")
+metadata/items = ExtResource("9_jmsrf")
+
+[node name="Sprite2D" type="Sprite2D" parent="." node_paths=PackedStringArray("plant_view")]
+texture = ExtResource("1_0eu14")
+script = ExtResource("5_3jg25")
+plant_view = NodePath("..")
+
+[node name="StateChart" type="Node" parent="."]
+script = ExtResource("2_o4qva")
+metadata/_custom_type_script = "uid://couw105c3bde4"
+
+[node name="Root" type="Node" parent="StateChart"]
+script = ExtResource("3_8d46b")
+initial_state = NodePath("Normal")
+
+[node name="Normal" type="Node" parent="StateChart/Root"]
+script = ExtResource("4_r6m5m")
+
+[node name="ToText" type="Node" parent="StateChart/Root/Normal"]
+script = ExtResource("5_8d46b")
+to = NodePath("../../Text")
+event = &"player_entered"
+delay_in_seconds = "0.0"
+
+[node name="Text" type="Node" parent="StateChart/Root"]
+script = ExtResource("4_r6m5m")
+
+[node name="ToCollection" type="Node" parent="StateChart/Root/Text"]
+script = ExtResource("5_8d46b")
+to = NodePath("../../Collection")
+event = &"space_pressed"
+delay_in_seconds = "0.0"
+
+[node name="ToNormal" type="Node" parent="StateChart/Root/Text"]
+script = ExtResource("5_8d46b")
+to = NodePath("../../Normal")
+event = &"player_exited"
+delay_in_seconds = "0.0"
+
+[node name="Collection" type="Node" parent="StateChart/Root"]
+script = ExtResource("4_r6m5m")
+
+[node name="Transition" type="Node" parent="StateChart/Root/Collection"]
+script = ExtResource("5_8d46b")
+to = NodePath("../../Normal")
+event = &"player_exited"
+delay_in_seconds = "0.0"
+
+[node name="StateChartManager" type="Node" parent="." node_paths=PackedStringArray("state_chart")]
+script = ExtResource("6_r6m5m")
+state_chart = NodePath("../StateChart")
+
+[node name="StatesLogic" type="Node" parent="." node_paths=PackedStringArray("plant_view", "space_label", "sprite2d")]
+script = ExtResource("7_1te3c")
+plant_view = NodePath("..")
+space_label = NodePath("../Label")
+sprite2d = NodePath("../Sprite2D")
+metadata/all_items = ExtResource("9_jmsrf")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_8d46b")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -63.0
+offset_top = -29.0
+offset_right = 66.0
+offset_bottom = -13.0
+text = "space to collect"
+label_settings = SubResource("LabelSettings_tj0yi")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[connection signal="state_entered" from="StateChart/Root/Normal" to="StatesLogic" method="_on_normal_state_entered"]
+[connection signal="state_entered" from="StateChart/Root/Text" to="StatesLogic" method="_on_text_state_entered"]
+[connection signal="state_exited" from="StateChart/Root/Text" to="StatesLogic" method="_on_text_state_exited"]
+[connection signal="state_entered" from="StateChart/Root/Collection" to="StatesLogic" method="_on_collection_state_entered"]
+[connection signal="state_exited" from="StateChart/Root/Collection" to="StatesLogic" method="_on_collection_state_exited"]
+[connection signal="body_entered" from="Area2D" to="StateChartManager" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="StateChartManager" method="_on_area_2d_body_exited"]

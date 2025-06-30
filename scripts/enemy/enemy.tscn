@@ -1,0 +1,255 @@
+[gd_scene load_steps=34 format=3 uid="uid://qfvxkgn46ubu"]
+
+[ext_resource type="Script" uid="uid://e7nl7kh0s6j5" path="res://scripts/enemy/enemy.gd" id="1_hhlal"]
+[ext_resource type="Texture2D" uid="uid://32i6wo64q4gk" path="res://sprites/Mushroom without VFX/Mushroom-Hit.png" id="1_x7lgl"]
+[ext_resource type="Texture2D" uid="uid://boyr14imco1tq" path="res://sprites/Mushroom without VFX/Mushroom-Idle.png" id="2_su13s"]
+[ext_resource type="Texture2D" uid="uid://w77lreuugfuw" path="res://sprites/Mushroom without VFX/Mushroom-Run.png" id="3_5bwyd"]
+[ext_resource type="Script" uid="uid://couw105c3bde4" path="res://addons/godot_state_charts/state_chart.gd" id="4_hhlal"]
+[ext_resource type="Script" uid="uid://jk2jm1g6q853" path="res://addons/godot_state_charts/compound_state.gd" id="5_escsu"]
+[ext_resource type="Script" uid="uid://cytafq8i1y8qm" path="res://addons/godot_state_charts/atomic_state.gd" id="6_ipal1"]
+[ext_resource type="Script" uid="uid://cf1nsco3w0mf6" path="res://addons/godot_state_charts/transition.gd" id="7_p5k8n"]
+[ext_resource type="Script" uid="uid://c4usrbiy6hu5v" path="res://scripts/enemy/state_chart_manager.gd" id="8_su13s"]
+[ext_resource type="Script" uid="uid://rw25lrogatu8" path="res://scripts/enemy/states_logic.gd" id="9_5bwyd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4lmeg"]
+atlas = ExtResource("1_x7lgl")
+region = Rect2(0, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0cp0l"]
+atlas = ExtResource("1_x7lgl")
+region = Rect2(80, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2t1y"]
+atlas = ExtResource("1_x7lgl")
+region = Rect2(160, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gngh3"]
+atlas = ExtResource("1_x7lgl")
+region = Rect2(240, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0n3wm"]
+atlas = ExtResource("1_x7lgl")
+region = Rect2(320, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qnost"]
+atlas = ExtResource("2_su13s")
+region = Rect2(0, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wnkbs"]
+atlas = ExtResource("2_su13s")
+region = Rect2(80, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f6a44"]
+atlas = ExtResource("2_su13s")
+region = Rect2(160, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0cbny"]
+atlas = ExtResource("2_su13s")
+region = Rect2(240, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hrvbo"]
+atlas = ExtResource("2_su13s")
+region = Rect2(320, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uypp3"]
+atlas = ExtResource("2_su13s")
+region = Rect2(400, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_blkrb"]
+atlas = ExtResource("2_su13s")
+region = Rect2(480, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_abqjc"]
+atlas = ExtResource("3_5bwyd")
+region = Rect2(0, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6iyjs"]
+atlas = ExtResource("3_5bwyd")
+region = Rect2(80, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4w656"]
+atlas = ExtResource("3_5bwyd")
+region = Rect2(160, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e71vb"]
+atlas = ExtResource("3_5bwyd")
+region = Rect2(240, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rnkwl"]
+atlas = ExtResource("3_5bwyd")
+region = Rect2(320, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vke2r"]
+atlas = ExtResource("3_5bwyd")
+region = Rect2(400, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uit24"]
+atlas = ExtResource("3_5bwyd")
+region = Rect2(480, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ruth0"]
+atlas = ExtResource("3_5bwyd")
+region = Rect2(560, 0, 80, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rm4vd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4lmeg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0cp0l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2t1y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gngh3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0n3wm")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qnost")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wnkbs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f6a44")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0cbny")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hrvbo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uypp3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_blkrb")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_abqjc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6iyjs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4w656")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e71vb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rnkwl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vke2r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uit24")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ruth0")
+}],
+"loop": true,
+"name": &"run",
+"speed": 7.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5bwyd"]
+radius = 83.2166
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5bwyd"]
+
+[node name="Enemy" type="CharacterBody2D"]
+editor_description = "мелкий враг иногда атакует алхимика, иногда приходит к его котлу, не представляет большой угрозы, просто бесит"
+script = ExtResource("1_hhlal")
+speed = 60.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -17)
+sprite_frames = SubResource("SpriteFrames_rm4vd")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.123545
+
+[node name="StateChart" type="Node" parent="."]
+script = ExtResource("4_hhlal")
+metadata/_custom_type_script = "uid://couw105c3bde4"
+
+[node name="Root" type="Node" parent="StateChart"]
+script = ExtResource("5_escsu")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateChart/Root"]
+script = ExtResource("6_ipal1")
+
+[node name="ToRun" type="Node" parent="StateChart/Root/Idle"]
+script = ExtResource("7_p5k8n")
+to = NodePath("../../Run")
+event = &"player_entered_to_zone"
+delay_in_seconds = "0.0"
+
+[node name="ToHurt" type="Node" parent="StateChart/Root/Idle"]
+script = ExtResource("7_p5k8n")
+to = NodePath("../../Hurt")
+event = &"enemy_damaged"
+delay_in_seconds = "0.0"
+
+[node name="Run" type="Node" parent="StateChart/Root"]
+script = ExtResource("6_ipal1")
+
+[node name="ToHurt" type="Node" parent="StateChart/Root/Run"]
+script = ExtResource("7_p5k8n")
+to = NodePath("../../Hurt")
+event = &"enemy_damaged"
+delay_in_seconds = "0.0"
+
+[node name="ToIdle" type="Node" parent="StateChart/Root/Run"]
+script = ExtResource("7_p5k8n")
+to = NodePath("../../Idle")
+event = &"player_exited_from_zone"
+delay_in_seconds = "0.0"
+
+[node name="Hurt" type="Node" parent="StateChart/Root"]
+script = ExtResource("6_ipal1")
+
+[node name="StateChartManager" type="Node" parent="." node_paths=PackedStringArray("state_chart")]
+script = ExtResource("8_su13s")
+state_chart = NodePath("../StateChart")
+
+[node name="StatesLogic" type="Node" parent="." node_paths=PackedStringArray("animated_sprite", "enemy")]
+script = ExtResource("9_5bwyd")
+animated_sprite = NodePath("../AnimatedSprite2D")
+enemy = NodePath("..")
+
+[node name="AttackZone" type="Area2D" parent="."]
+editor_description = "раз там в минуту есть шанс увеличится раза в 2.
+как только начался агр, таймер секунды 3, и зона начинает уменьшатся."
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone"]
+shape = SubResource("CircleShape2D_5bwyd")
+debug_color = Color(0.941176, 0.0941176, 0.560784, 0.0980392)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_5bwyd")
+
+[connection signal="state_entered" from="StateChart/Root/Idle" to="StatesLogic" method="_on_idle_state_entered"]
+[connection signal="state_entered" from="StateChart/Root/Run" to="StatesLogic" method="_on_run_state_entered"]
+[connection signal="state_processing" from="StateChart/Root/Run" to="StatesLogic" method="_on_run_state_processing"]
+[connection signal="state_entered" from="StateChart/Root/Hurt" to="StatesLogic" method="_on_hurt_state_entered"]
+[connection signal="body_entered" from="AttackZone" to="StateChartManager" method="_on_attack_zone_body_entered"]
+[connection signal="body_exited" from="AttackZone" to="StateChartManager" method="_on_attack_zone_body_exited"]

@@ -1,0 +1,73 @@
+[gd_resource type="SpriteFrames" load_steps=11 format=3 uid="uid://cwtofg2uktx05"]
+
+[ext_resource type="Texture2D" uid="uid://cn8j8buju1wc8" path="res://sprites/Bunny Pack/Spritesheets/spritesheet idle.png" id="1_8paui"]
+[ext_resource type="Texture2D" uid="uid://dryvbj02x1st5" path="res://sprites/Bunny Pack/Spritesheets/spritesheet run.png" id="2_hxof8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hlhxl"]
+atlas = ExtResource("1_8paui")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0cmck"]
+atlas = ExtResource("1_8paui")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_my0jb"]
+atlas = ExtResource("1_8paui")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xk74s"]
+atlas = ExtResource("1_8paui")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l7u3h"]
+atlas = ExtResource("2_hxof8")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xoe6q"]
+atlas = ExtResource("2_hxof8")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_av44x"]
+atlas = ExtResource("2_hxof8")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gvn75"]
+atlas = ExtResource("2_hxof8")
+region = Rect2(192, 0, 64, 64)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hlhxl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0cmck")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_my0jb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xk74s")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l7u3h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xoe6q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_av44x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gvn75")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]

@@ -1,5 +1,6 @@
 class_name InventoryItem
-extends Node
+extends Resource
 
 @export var texture: Texture
 @export var item_name: String
+@export var count: int = 1

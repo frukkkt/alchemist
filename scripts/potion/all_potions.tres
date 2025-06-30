@@ -1,0 +1,40 @@
+[gd_resource type="Resource" load_steps=9 format=3 uid="uid://cxkw8v7bws0ok"]
+
+[ext_resource type="Script" uid="uid://0s4a0fp5nrx" path="res://scripts/potion/potion.gd" id="1_j4s40"]
+[ext_resource type="Texture2D" uid="uid://b8o71q0t6t4mm" path="res://sprites/icons32x32.png" id="2_a1o2q"]
+[ext_resource type="Script" uid="uid://cldjc405jputn" path="res://scripts/potion/potions.gd" id="2_tlmdh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fgm1q"]
+atlas = ExtResource("2_a1o2q")
+region = Rect2(352, 32, 32, 32)
+
+[sub_resource type="Resource" id="Resource_j4s40"]
+script = ExtResource("1_j4s40")
+is_for_throw = true
+potion_throw_diagonal = 100.0
+is_for_dring = false
+texture = SubResource("AtlasTexture_fgm1q")
+item_name = ""
+count = 1
+metadata/_custom_type_script = "uid://0s4a0fp5nrx"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tlmdh"]
+load_path = "res://.godot/imported/icons32x32.png-a5d1c7f341239630041347ac9560bdb6.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a1o2q"]
+atlas = SubResource("CompressedTexture2D_tlmdh")
+region = Rect2(384, 160, 32, 32)
+
+[sub_resource type="Resource" id="Resource_fgm1q"]
+script = ExtResource("1_j4s40")
+is_for_throw = false
+potion_throw_diagonal = 100.0
+is_for_dring = true
+texture = SubResource("AtlasTexture_a1o2q")
+item_name = "Potion of Wit"
+count = 1
+metadata/_custom_type_script = "uid://0s4a0fp5nrx"
+
+[resource]
+script = ExtResource("2_tlmdh")
+all_potions = Array[ExtResource("1_j4s40")]([SubResource("Resource_j4s40"), SubResource("Resource_fgm1q")])

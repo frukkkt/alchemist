@@ -1,0 +1,146 @@
+[gd_scene load_steps=17 format=3 uid="uid://dh37ab8tc8uil"]
+
+[ext_resource type="Script" uid="uid://b3r4ce1qiyhx3" path="res://scripts/portal/portal.gd" id="1_xwveh"]
+[ext_resource type="Texture2D" uid="uid://dfbikh3hudg3g" path="res://sprites/Dimensional_Portal.png" id="2_pp7tu"]
+[ext_resource type="Script" uid="uid://couw105c3bde4" path="res://addons/godot_state_charts/state_chart.gd" id="3_hea13"]
+[ext_resource type="Script" uid="uid://jk2jm1g6q853" path="res://addons/godot_state_charts/compound_state.gd" id="4_xx6s3"]
+[ext_resource type="Script" uid="uid://cytafq8i1y8qm" path="res://addons/godot_state_charts/atomic_state.gd" id="5_gd6c1"]
+[ext_resource type="Script" uid="uid://cf1nsco3w0mf6" path="res://addons/godot_state_charts/transition.gd" id="6_pcj57"]
+[ext_resource type="Script" uid="uid://dmx3luf7boeyu" path="res://scripts/portal/state_chart_manager.gd" id="7_dr7wl"]
+[ext_resource type="Script" uid="uid://x5tnhbtdbvx" path="res://scripts/portal/states_logics.gd" id="8_dqe51"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_facbu"]
+atlas = ExtResource("2_pp7tu")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1qrp"]
+atlas = ExtResource("2_pp7tu")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_come4"]
+atlas = ExtResource("2_pp7tu")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h8e4i"]
+atlas = ExtResource("2_pp7tu")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4lmeg"]
+atlas = ExtResource("2_pp7tu")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0cp0l"]
+atlas = ExtResource("2_pp7tu")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d2t1y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_facbu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1qrp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_come4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h8e4i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4lmeg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0cp0l")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0odxb"]
+radius = 7.0
+
+[node name="Portal" type="Node2D"]
+script = ExtResource("1_xwveh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_d2t1y")
+autoplay = "default"
+frame_progress = 0.117777
+
+[node name="StateChart" type="Node" parent="."]
+script = ExtResource("3_hea13")
+metadata/_custom_type_script = "uid://couw105c3bde4"
+
+[node name="Root" type="Node" parent="StateChart"]
+script = ExtResource("4_xx6s3")
+initial_state = NodePath("NoText")
+
+[node name="NoText" type="Node" parent="StateChart/Root"]
+script = ExtResource("5_gd6c1")
+
+[node name="ToTextg" type="Node" parent="StateChart/Root/NoText"]
+script = ExtResource("6_pcj57")
+to = NodePath("../../Text")
+event = &"player_entered"
+delay_in_seconds = "0.0"
+
+[node name="Text" type="Node" parent="StateChart/Root"]
+script = ExtResource("5_gd6c1")
+
+[node name="ToNoText" type="Node" parent="StateChart/Root/Text"]
+script = ExtResource("6_pcj57")
+to = NodePath("../../NoText")
+event = &"player_exited"
+delay_in_seconds = "0.0"
+
+[node name="ToTeleporting" type="Node" parent="StateChart/Root/Text"]
+script = ExtResource("6_pcj57")
+to = NodePath("../../Teleporting")
+event = &"t_key_pressed"
+delay_in_seconds = "0.0"
+
+[node name="Teleporting" type="Node" parent="StateChart/Root"]
+script = ExtResource("5_gd6c1")
+
+[node name="Transition" type="Node" parent="StateChart/Root/Teleporting"]
+script = ExtResource("6_pcj57")
+to = NodePath("../../NoText")
+delay_in_seconds = "0.0"
+
+[node name="StateChartManager" type="Node" parent="." node_paths=PackedStringArray("state_chart")]
+script = ExtResource("7_dr7wl")
+state_chart = NodePath("../StateChart")
+
+[node name="StatesLogics" type="Node" parent="." node_paths=PackedStringArray("portal", "portal_label")]
+script = ExtResource("8_dqe51")
+portal = NodePath("..")
+portal_label = NodePath("../PortalLabel")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(1, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_0odxb")
+
+[node name="PortalLabel" type="RichTextLabel" parent="."]
+visible = false
+offset_left = -33.0
+offset_top = -25.0
+offset_right = 37.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/normal_font_size = 9
+text = "t to enter"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[connection signal="state_entered" from="StateChart/Root/Text" to="StatesLogics" method="_on_text_state_entered"]
+[connection signal="state_exited" from="StateChart/Root/Text" to="StatesLogics" method="_on_text_state_exited"]
+[connection signal="state_entered" from="StateChart/Root/Teleporting" to="StatesLogics" method="_on_teleporting_state_entered"]
+[connection signal="body_entered" from="Area2D" to="StateChartManager" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="StateChartManager" method="_on_area_2d_body_exited"]

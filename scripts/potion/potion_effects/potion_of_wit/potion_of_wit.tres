@@ -1,0 +1,8 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://m0ii7k58wwa7"]
+
+[ext_resource type="Script" uid="uid://csj12wsfbobxa" path="res://scripts/potion/potion_effects/potion_of_wit/potion_of_wit.gd" id="1_uyigy"]
+
+[resource]
+script = ExtResource("1_uyigy")
+additional_wit = 22.0
+metadata/_custom_type_script = "uid://cxylj83bhgl0c"

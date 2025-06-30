@@ -1,7 +1,17 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://grbh26uiiuag"]
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://grbh26uiiuag"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b7qry"]
 bg_color = Color(0.0309145, 0.0633381, 0.10531, 0.564706)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g06jp"]
+bg_color = Color(0.0429825, 0.0781067, 0.0504954, 0.305882)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vy3ll"]
+bg_color = Color(0.0878445, 0.156089, 0.171392, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+
 [resource]
 Panel/styles/panel = SubResource("StyleBoxFlat_b7qry")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_g06jp")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_vy3ll")

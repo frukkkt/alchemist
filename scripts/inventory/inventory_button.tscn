@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxxyyejdhp5om"]
+
+[ext_resource type="Texture2D" uid="uid://lak6spi51y81" path="res://sprites/Herbs Pack 32x32 free/Whole things/red_peppers 32.png" id="1_ed4r7"]
+[ext_resource type="Script" uid="uid://b2ep336x3mmhh" path="res://scripts/inventory/inventory_button.gd" id="2_75vh3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_getpj"]
+font_size = 8
+
+[node name="InventoryButton" type="Button" node_paths=PackedStringArray("drink_button", "throw_button")]
+custom_minimum_size = Vector2(32, 32)
+focus_mode = 0
+icon = ExtResource("1_ed4r7")
+expand_icon = true
+script = ExtResource("2_75vh3")
+drink_button = NodePath("DringButton")
+throw_button = NodePath("ThrowButton")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "2"
+label_settings = SubResource("LabelSettings_getpj")
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="ThrowButton" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -8.0
+offset_top = -25.0
+offset_right = 41.0
+offset_bottom = -1.0
+text = "throw"
+
+[node name="DringButton" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -8.0
+offset_top = -25.0
+offset_right = 41.0
+offset_bottom = -1.0
+text = "drink"
