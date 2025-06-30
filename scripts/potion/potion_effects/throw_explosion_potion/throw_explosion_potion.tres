@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cbisehr4ldp1h"]
+
+[ext_resource type="Script" uid="uid://ju187q74nb6m" path="res://scripts/potion/potion_effects/throw_explosion_potion/throw_explosion_potion.gd" id="1_745xf"]
+
+[resource]
+script = ExtResource("1_745xf")
+explosion_damage = 100
+explosion_radius = 100.0
+metadata/_custom_type_script = "uid://cxylj83bhgl0c"

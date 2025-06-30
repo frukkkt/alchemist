@@ -1,7 +1,8 @@
-[gd_resource type="Resource" load_steps=9 format=3 uid="uid://cxkw8v7bws0ok"]
+[gd_resource type="Resource" load_steps=10 format=3 uid="uid://cxkw8v7bws0ok"]
 
 [ext_resource type="Script" uid="uid://0s4a0fp5nrx" path="res://scripts/potion/potion.gd" id="1_j4s40"]
 [ext_resource type="Texture2D" uid="uid://b8o71q0t6t4mm" path="res://sprites/icons32x32.png" id="2_a1o2q"]
+[ext_resource type="Resource" uid="uid://cbisehr4ldp1h" path="res://scripts/potion/potion_effects/throw_explosion_potion/throw_explosion_potion.tres" id="2_fgm1q"]
 [ext_resource type="Script" uid="uid://cldjc405jputn" path="res://scripts/potion/potions.gd" id="2_tlmdh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fgm1q"]
@@ -13,6 +14,7 @@ script = ExtResource("1_j4s40")
 is_for_throw = true
 potion_throw_diagonal = 100.0
 is_for_dring = false
+potion_effect = ExtResource("2_fgm1q")
 texture = SubResource("AtlasTexture_fgm1q")
 item_name = ""
 count = 1

@@ -1,15 +1,18 @@
-[gd_scene load_steps=34 format=3 uid="uid://qfvxkgn46ubu"]
+[gd_scene load_steps=55 format=3 uid="uid://qfvxkgn46ubu"]
 
 [ext_resource type="Script" uid="uid://e7nl7kh0s6j5" path="res://scripts/enemy/enemy.gd" id="1_hhlal"]
 [ext_resource type="Texture2D" uid="uid://32i6wo64q4gk" path="res://sprites/Mushroom without VFX/Mushroom-Hit.png" id="1_x7lgl"]
 [ext_resource type="Texture2D" uid="uid://boyr14imco1tq" path="res://sprites/Mushroom without VFX/Mushroom-Idle.png" id="2_su13s"]
 [ext_resource type="Texture2D" uid="uid://w77lreuugfuw" path="res://sprites/Mushroom without VFX/Mushroom-Run.png" id="3_5bwyd"]
 [ext_resource type="Script" uid="uid://couw105c3bde4" path="res://addons/godot_state_charts/state_chart.gd" id="4_hhlal"]
+[ext_resource type="Texture2D" uid="uid://dtkwyi5gmuh8w" path="res://sprites/Mushroom without VFX/Mushroom-Die.png" id="4_ipal1"]
 [ext_resource type="Script" uid="uid://jk2jm1g6q853" path="res://addons/godot_state_charts/compound_state.gd" id="5_escsu"]
 [ext_resource type="Script" uid="uid://cytafq8i1y8qm" path="res://addons/godot_state_charts/atomic_state.gd" id="6_ipal1"]
 [ext_resource type="Script" uid="uid://cf1nsco3w0mf6" path="res://addons/godot_state_charts/transition.gd" id="7_p5k8n"]
 [ext_resource type="Script" uid="uid://c4usrbiy6hu5v" path="res://scripts/enemy/state_chart_manager.gd" id="8_su13s"]
 [ext_resource type="Script" uid="uid://rw25lrogatu8" path="res://scripts/enemy/states_logic.gd" id="9_5bwyd"]
+[ext_resource type="Script" uid="uid://le5w1cm0ul8p" path="res://addons/godot_state_charts/expression_guard.gd" id="9_escsu"]
+[ext_resource type="PackedScene" uid="uid://dees2k3s71ghi" path="res://scripts/my_area2d/my_area2d.tscn" id="13_p5k8n"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4lmeg"]
 atlas = ExtResource("1_x7lgl")
@@ -58,6 +61,66 @@ region = Rect2(400, 0, 80, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_blkrb"]
 atlas = ExtResource("2_su13s")
 region = Rect2(480, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5k8n"]
+atlas = ExtResource("4_ipal1")
+region = Rect2(0, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wohgq"]
+atlas = ExtResource("4_ipal1")
+region = Rect2(80, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aijuq"]
+atlas = ExtResource("4_ipal1")
+region = Rect2(160, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qcsh8"]
+atlas = ExtResource("4_ipal1")
+region = Rect2(240, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gwjr5"]
+atlas = ExtResource("4_ipal1")
+region = Rect2(320, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c3oii"]
+atlas = ExtResource("4_ipal1")
+region = Rect2(400, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_axpba"]
+atlas = ExtResource("4_ipal1")
+region = Rect2(480, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8owdt"]
+atlas = ExtResource("4_ipal1")
+region = Rect2(560, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ss8k3"]
+atlas = ExtResource("4_ipal1")
+region = Rect2(640, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gcfka"]
+atlas = ExtResource("4_ipal1")
+region = Rect2(720, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cnhdo"]
+atlas = ExtResource("4_ipal1")
+region = Rect2(800, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_305lq"]
+atlas = ExtResource("4_ipal1")
+region = Rect2(880, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aioj4"]
+atlas = ExtResource("4_ipal1")
+region = Rect2(960, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wxuus"]
+atlas = ExtResource("4_ipal1")
+region = Rect2(1040, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ah5ti"]
+atlas = ExtResource("4_ipal1")
+region = Rect2(1120, 0, 80, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_abqjc"]
 atlas = ExtResource("3_5bwyd")
@@ -141,6 +204,56 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_p5k8n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wohgq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aijuq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qcsh8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gwjr5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c3oii")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_axpba")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8owdt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ss8k3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gcfka")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cnhdo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_305lq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aioj4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wxuus")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ah5ti")
+}],
+"loop": false,
+"name": &"knocked_out",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_abqjc")
 }, {
 "duration": 1.0,
@@ -169,10 +282,21 @@ animations = [{
 "speed": 7.0
 }]
 
+[sub_resource type="Resource" id="Resource_ipal1"]
+script = ExtResource("9_escsu")
+expression = "enemy_current_hp <= 0.0"
+metadata/_custom_type_script = "uid://le5w1cm0ul8p"
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_5bwyd"]
 radius = 83.2166
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5bwyd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ipal1"]
+font_size = 8
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wohgq"]
+radius = 21.0
 
 [node name="Enemy" type="CharacterBody2D"]
 editor_description = "мелкий враг иногда атакует алхимика, иногда приходит к его котлу, не представляет большой угрозы, просто бесит"
@@ -182,9 +306,10 @@ speed = 60.0
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -17)
 sprite_frames = SubResource("SpriteFrames_rm4vd")
-animation = &"idle"
+animation = &"knocked_out"
 autoplay = "idle"
-frame_progress = 0.123545
+frame = 14
+frame_progress = 1.0
 
 [node name="StateChart" type="Node" parent="."]
 script = ExtResource("4_hhlal")
@@ -227,14 +352,35 @@ delay_in_seconds = "0.0"
 [node name="Hurt" type="Node" parent="StateChart/Root"]
 script = ExtResource("6_ipal1")
 
-[node name="StateChartManager" type="Node" parent="." node_paths=PackedStringArray("state_chart")]
+[node name="Transition" type="Node" parent="StateChart/Root/Hurt"]
+script = ExtResource("7_p5k8n")
+to = NodePath("../../KnockedOut")
+guard = SubResource("Resource_ipal1")
+delay_in_seconds = "0.0"
+
+[node name="KnockedOut" type="Node" parent="StateChart/Root"]
+script = ExtResource("6_ipal1")
+
+[node name="ToAwaitingExecution" type="Node" parent="StateChart/Root/KnockedOut"]
+script = ExtResource("7_p5k8n")
+to = NodePath("../../AwaitingExecution")
+delay_in_seconds = "0.0"
+
+[node name="AwaitingExecution" type="Node" parent="StateChart/Root"]
+script = ExtResource("6_ipal1")
+
+[node name="StateChartManager" type="Node" parent="." node_paths=PackedStringArray("state_chart", "enemy")]
 script = ExtResource("8_su13s")
 state_chart = NodePath("../StateChart")
+enemy = NodePath("..")
 
-[node name="StatesLogic" type="Node" parent="." node_paths=PackedStringArray("animated_sprite", "enemy")]
+[node name="StatesLogic" type="Node" parent="." node_paths=PackedStringArray("animated_sprite", "enemy", "enemy_collision_shape", "execution_prompt_label", "execution_zone")]
 script = ExtResource("9_5bwyd")
 animated_sprite = NodePath("../AnimatedSprite2D")
 enemy = NodePath("..")
+enemy_collision_shape = NodePath("../CollisionShape2D")
+execution_prompt_label = NodePath("../ExecutionPromtLabel")
+execution_zone = NodePath("../MyArea2d")
 
 [node name="AttackZone" type="Area2D" parent="."]
 editor_description = "раз там в минуту есть шанс увеличится раза в 2.
@@ -247,9 +393,28 @@ debug_color = Color(0.941176, 0.0941176, 0.560784, 0.0980392)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_5bwyd")
 
+[node name="ExecutionPromtLabel" type="Label" parent="."]
+visible = false
+offset_left = -40.0
+offset_top = -27.0
+offset_right = 41.0
+offset_bottom = -11.0
+text = "press space to finish"
+label_settings = SubResource("LabelSettings_ipal1")
+
+[node name="MyArea2d" parent="." instance=ExtResource("13_p5k8n")]
+
+[node name="CollisionShape2D" parent="MyArea2d" index="0"]
+shape = SubResource("CircleShape2D_wohgq")
+
+[connection signal="damage_taken" from="." to="StateChartManager" method="_on_enemy_damage_taken"]
 [connection signal="state_entered" from="StateChart/Root/Idle" to="StatesLogic" method="_on_idle_state_entered"]
 [connection signal="state_entered" from="StateChart/Root/Run" to="StatesLogic" method="_on_run_state_entered"]
 [connection signal="state_processing" from="StateChart/Root/Run" to="StatesLogic" method="_on_run_state_processing"]
 [connection signal="state_entered" from="StateChart/Root/Hurt" to="StatesLogic" method="_on_hurt_state_entered"]
+[connection signal="state_entered" from="StateChart/Root/KnockedOut" to="StatesLogic" method="_on_knocked_out_state_entered"]
+[connection signal="state_entered" from="StateChart/Root/AwaitingExecution" to="StatesLogic" method="_on_awaiting_execution_state_entered"]
 [connection signal="body_entered" from="AttackZone" to="StateChartManager" method="_on_attack_zone_body_entered"]
 [connection signal="body_exited" from="AttackZone" to="StateChartManager" method="_on_attack_zone_body_exited"]
+
+[editable path="MyArea2d"]

@@ -30,8 +30,13 @@ func throw():
 	await tween.finished
 	explosion_sprite.play('explosion')
 	sprite.hide()
+	
+	potion.potion_effect.throw_effect([self.global_position])
+
 	await explosion_sprite.animation_finished
 	queue_free()
+
+
 
 func move_to_projectiles_parent():
 	var projectiles = get_tree().get_first_node_in_group('projectiles')

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dees2k3s71ghi"]
+
+[ext_resource type="Script" uid="uid://ouh3xexdxaes" path="res://scripts/my_area2d/my_area_2d.gd" id="1_5sy6n"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b5uon"]
+
+[node name="MyArea2d" type="Area2D" node_paths=PackedStringArray("col_shape")]
+script = ExtResource("1_5sy6n")
+col_shape = NodePath("CollisionShape2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_b5uon")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

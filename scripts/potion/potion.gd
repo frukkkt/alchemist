@@ -9,11 +9,6 @@ var potion_throw_radius: float = 0.0: get = get_potion_throw_radius
 @export var potion_effect: PotionEffect
 
 
-func drink_effect():
-	pass
-
-
-
 
 func get_potion_throw_radius():
 	return potion_throw_diagonal / 2.0
